@@ -1,0 +1,9 @@
+name: msmtp
+release: 1
+version: 1.8.20
+description: |
+  An SMTP client
+url: https://marlam.de/msmtp
+sources:
+  - uri: https://marlam.de/msmtp/releases/msmtp-1.8.20.tar.xz
+    sha256: d93ae2aafc0f48af7dc9d0b394df1bb800588b8b4e8d096d8b3cf225344eb111

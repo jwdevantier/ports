@@ -1,0 +1,9 @@
+name: notmuch
+release: 1
+version: 0.35
+description: |
+  Mail indexer
+url: https://notmuchmail.org/releases/
+sources:
+  - uri: https://notmuchmail.org/releases/notmuch-0.35.tar.xz
+    sha256: a831c414c4f20a6cae3a580793c855102d3295080f000eb3832b77226a40ac39

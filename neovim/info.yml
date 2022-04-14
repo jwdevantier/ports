@@ -1,0 +1,9 @@
+name: neovim
+release: 1
+description: |
+  Text editor
+url: https://neovim.io/
+sources:
+  - git: https://github.com/neovim/neovim
+    branch: stable
+    name: neovim

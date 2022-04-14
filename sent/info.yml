@@ -1,0 +1,8 @@
+name: sent
+release: 1
+description: |
+  Simple presentation program
+url: https://tools.suckless.org/sent/
+sources:
+  - git: https://git.suckless.org/sent
+    name: sent
