@@ -27,6 +27,9 @@ class Build(PkgBuildSteps):
             "make",
             "pkg-config",
             "gcc",
+            "libtool",
+            "c++",
+            "msgmerge",
         )
 
     def build(self, build_dir: Path, dest_dir: Path):
