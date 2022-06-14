@@ -1,6 +1,6 @@
 from pathlib import Path
 from typing import Optional
-from leport.api import PkgBuildSteps, PkgInfo, sh, cwd, get_paths, ldconfig, require_programs
+from leport.api import PkgBuildSteps, PkgInfo, sh, cwd, get_paths, require_programs
 from multiprocessing import cpu_count
 import os
 
@@ -10,36 +10,17 @@ class Build(PkgBuildSteps):
         self.pkg_src_dir = self.build_dir / f"{self.info.name}-{self.info.version}"
 
     def prepare(self, info: PkgInfo, build_dir: Path):
-        sh("tar", "xvf", f"notmuch-{self.info.version}.tar.xz")
+        sh("tar", "xvf", f"{self.info.name}-{self.info.version}.tar.gz")
 
     def depends(self, build_dir: Path):
-        env = os.environ.copy()
-        pkg_path_default = sh(
-                "pkg-config", "--variable", "pc_path", "pkg-config", capture=True).stdout.strip()
-        env["PKG_CONFIG_PATH"] = f"/usr/local/lib/pkgconfig:{pkg_path_default}"
-
-        libs = ldconfig()
-        
-        # libs.require_libraries_rgx(
-        #     "libtalloc.so",
-        #     "libxapian.so",
-        #     "libgmime-.*\.so"
-        # )
-        require_programs(
-            "gpgsm"
-        )
-
+        # skip for now, would require some sensing of libs required etc.
+        pass
 
     def build(self, build_dir: Path, dest_dir: Path):
         with cwd(self.pkg_src_dir):
-            pkg_path_default = sh(
-                "pkg-config", "--variable", "pc_path", "pkg-config", capture=True).stdout.strip()
-
             env = os.environ.copy()
-            env["PKG_CONFIG_PATH"] = f"/usr/local/lib/pkgconfig:{pkg_path_default}"
-
             sh(
-                "./configure", "--prefix=/usr/local",
+                "./configure", "--with-zlib", "--with-ssl", "--prefix=/usr/local",
                 env=env)
             sh("make", f"-j{cpu_count()}", env=env)
 

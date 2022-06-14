@@ -1,0 +1,9 @@
+name: isync
+release: 1
+version: 1.4.4
+description: |
+  mailbox synchronization tools
+url: https://isync.sourceforge.io/
+sources:
+  - uri: https://distfiles.macports.org/isync/isync-1.4.4.tar.gz
+    sha256: 7c3273894f22e98330a330051e9d942fd9ffbc02b91952c2f1896a5c37e700ff
